@@ -4,22 +4,25 @@ struct CalculatorBrain {
     
     var bmi: BMI?
     
+    // Gets BMI value
     func getBMIValue() -> String {
         let bmiTo1DecimalPlace = String(format: "%.1f", bmi?.value ?? 0.0)
         return bmiTo1DecimalPlace
     }
     
+    // Gets advice
     func getAdvice() -> String {
         return bmi?.advice ?? "No advice"
     }
     
+    // Gets color
     func getColor() -> UIColor {
         return bmi?.color ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
+    // Calculates BMI, advice, and color
     mutating func calculateBMI(height: Float, weight: Float) {
         let bmiValue = weight / (height * height)
-
         if bmiValue < 18.5 {
             bmi = BMI(value: bmiValue, advice: "Eat more pies!", color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
         } else if bmiValue < 24.9 {
